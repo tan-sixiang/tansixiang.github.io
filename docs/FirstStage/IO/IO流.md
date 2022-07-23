@@ -139,7 +139,66 @@ static void charWrite() {
 }
 ```
 
+## 3.对象流[重点]
 
+**对象流**： ObjectOutputStream / ObjectInputStream 
+
+- 增加了缓冲区功能。 
+
+- 增加了读写8种基本数据类型和字符串功能。 
+
+- 增加了读写对象的功能： 
+
+### 3.1对象流读写基本类型
+
+#### 3.1.0 注意点
+
+**实体类(必须要实现序列化接⼝)** 
+
+```java
+ class User implements Serializable{ 
+     2 String name;
+     3 int age; 
+     4 //..... 
+ }
+```
+
+
+
+#### 3.1.1 对象流写操作(序列化)  
+
+```java
+//============对象流读写对象============ 
+//写⼊对象 
+FileOutputStream fos = new FileOutputStream("f.txt"); 
+ObjectOutputStream oos = new ObjectOutputStream(fos);
+User user = new User("cxk", 30);
+oos.writeObject(user);
+oos.close();
+fos.close();
+```
+
+#### 3.1.2 对象流写操作(反序列化) 
+
+```java
+//读取对象 
+1 FileInputStream fis = new FileInputStream("f.txt");
+2 ObjectInputStream ois = new ObjectInputStream(fis);
+3 User user1 = (User) ois.readObject();
+4 System.out.println(user1);
+5 ois.close();
+6 fis.close();
+```
+
+3.1.3 序列化 
+
+序列化的细节: 
+
+1、对象流读到流的末尾，会抛出异常 EOFException 
+
+2、如果属性不想被序列化，那么可以使⽤transient关键字修饰 
+
+3、类实现了 Serializable 接⼝，会⾃动⽣成⼀序列化id(序列化和反序列的id要保证⼀致)
 
 
 
