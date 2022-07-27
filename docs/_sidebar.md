@@ -7,6 +7,7 @@
     * [集合](FirstStage/List/list.md)
     * [异常](FirstStage/Exception/exception.md)
     * [IO流](FirstStage/IO/IO流.md)
+    * [多线程](FirstStage/Thread/thread.md)
     * [其他](FirstStage/other/README.md)
 * 第二阶段
     * [javascript](02/javascript)
